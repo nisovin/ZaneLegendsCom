@@ -1,0 +1,273 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>Zane Legends - Writing Exercise</title>
+	
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	
+	<link rel="icon" type="image/png" href="/img/zl.png">
+	
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
+	<link rel="stylesheet" href="zane.css">
+	
+	<script type="text/javascript" src="zane.js"></script>
+	
+</head>
+
+<body>
+
+<div id="content">
+	<div class="container spacing"></div>
+		
+	<div class="container text-center">
+		<div class="zane-header">
+			<h1>
+				<span class="small">The Many Adventures of</span><br>
+				<span class="bigger">Zane Legends</span>
+			</h1>
+		</div>
+		<hr>
+	</div>
+
+	<div class="container">
+
+		<h2 id="whoIsZane">Who is Zane Legends?</h2>
+		
+		<p>
+			Zane Legends is a fictional character created as a writing exercise. The basic idea is to choose
+			a random genre, setting, and secondary character; then write a short story about Zane Legends, using
+			those criteria, in under an hour.
+		</p>
+		
+		<p>
+			The purpose of this writing exercise is to get you to write a short story, and finish it.
+			The criteria may seem limiting at first, but they are actually there to increase your 
+			creativity. The idea is to get you to try new things that may be outside of your usual
+			writing comfort zone.
+		</p>
+		
+		<hr>
+		
+		<h2 id="readyToWrite">Ready to Write?</h2>
+		
+		<div id="storyPrep">
+			
+			<p>
+				If you are ready to get writing an adventure about Zane Legends, just click the button below!
+				A random genre, setting, and secondary character will be selected for you, and the 60-minute
+				countdown will begin.
+			</p>
+			
+			<button type="button" class="btn btn-info btn-lg" onclick="startStory()">
+				<i class="fa fa-pencil"></i>
+				Start a Story
+			</button>
+			
+		</div>
+
+		<div id="storyCriteria" style="display: none">
+
+			<p>
+				Write a story about Zane Legends using the following randomly-selected criteria!
+			</p>
+			
+			<div class="text-center criteria">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class="panel-title"><i class="fa fa-lg fa-book"></i> Genre</h3>
+							</div>
+							<div class="panel-body">
+								<p id="genre"></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class="panel-title"><i class="fa fa-lg fa-location-arrow"></i> Setting</h3>
+							</div>
+							<div class="panel-body">
+								<p id="setting"></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class="panel-title"><i class="fa fa-lg fa-male"></i> Character</h3>
+							</div>
+							<div class="panel-body">
+								<p id="character"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+				
+			<div class="text-center">
+				<h3>Time Remaining: <span id="timeRemaining"></span></h3>
+				<div class="progress">
+					<div id="progressBar" class="progress-bar progress-bar-striped active" style="width: 100%">
+					</div>
+				</div>
+				<div id="endTime"></div>
+				<br>
+			</div>
+			
+			<button type="button" class="btn btn-info btn-lg" onclick="reset()">
+				Reset
+			</button>
+			
+		</div>
+		
+		<hr>
+		
+		<h2 id="rulesForWriting">Rules for Writing</h2>
+		
+		<p>
+			If you want to write a Zane Legends story, you should try to follow the rules below.
+			These rules are to give direction and help increase your creativity. Try not to think
+			of the rules as limitations, instead think of them as a way to help you write a story.
+		</p>
+		
+		<ol>
+			<li>
+				<strong>You must use the same opening for each Zane story.</strong><br>
+				<em>Some people have a knack for finding strange things. Strange things always seem
+				to find Zane Legends.</em><br>
+				You should always start with this opening, and you should even type it out, don't copy
+				and paste! This allows you to get your fingers on the keyboard and start writing. Once
+				you finish this opening, don't stop! Let the story flow.
+			</li>
+			<li>
+				<strong>You must keep the criteria you are given.</strong><br>
+				Don't reroll to get criteria that you like better! Part of this exercise is to break out of 
+				your preferred writing style and try something new.
+			</li>
+			<li>
+				<strong>You must incorporate the criteria into the story.</strong><br>
+				You don't have to necessarily make the criteria the central part of your story, but they
+				should be important in some way. You are not allowed to leave one out just because you don't 
+				like it. Again, this is about stretching your limits. See the information about the
+				criteria below.
+			</li>
+			<li>
+				<strong>Do not write for more than 60 minutes.</strong><br>
+				You may be tempted to write for longer than that, but don't do it! Part of this exercise
+				is to start and finish a story within a time period. You may discover that your story has
+				started down a path that makes it hard to finish, but finish it anyway! You might be 
+				surprised how difficult this can be.
+			</li>
+			<li>
+				<strong>Limit yourself to 1500 words.</strong><br>
+				As with the time limit, this is to encourage you to write and finish a complete story.
+				Don't allow yourself to go over, this is part of the challenge!
+			</li>
+			<li>
+				<strong>Include some of Zane's character traits.</strong><br>
+				This rule isn't as important, but it helps keep all of the adventures of Zane Legends feeling
+				like they describe the same character. See the list below.
+			</li>
+		</ol>
+		
+		<hr>
+		
+		<h2 id="storyCriteria">Story Criteria</h2>
+		
+		<h4>Genre</h4>	
+		<p>
+			Genres are things like Fantasy, Mystery, or Romance. The genre will determine the general theme
+			of the story you write. Some genres may overlap, for example, it's certainly possible to have
+			a romantic fantasy. This website will only give you one genre, so you can of course choose
+			another to go along if needed.
+		</p>
+		
+		<h4>Setting</h4>
+		<p>
+			Examples of settings are "on a beach", "at night", and "underground". These generally serve as
+			a location or situation for your story. You aren't required to use the setting for the entire
+			story, and you can have Zane go to other places. However, the chosen setting should be an
+			important part of the story.
+		</p>
+		
+		<h4>Character</h4>
+		<p>
+			A secondary character could be a doctor, a political figure, or a thief. This is a character
+			that should feature prominently in the story. This character should be included, but you are not 
+			limited to just this one character. Just remember that you only have a limited amount of time
+			and words, so don't introduce too many characters or you won't finish the story!
+		</p>
+		
+		<hr>
+		
+		<h2 id="traitsOfZane">Traits of Zane Legends</h2>
+		
+		<ul>
+			<li>
+				<strong>Zane is afraid of stairs.</strong><br>
+				This is not a simple fear, this is a debilitating phobia. Zane is absolutely terrified
+				of stairs of all kinds, and will avoid them at all costs.
+			</li>
+			<li>
+				<strong>Zane loves to eat.</strong><br>
+				It doesn't matter what, Zane loves food of all kinds.
+			</li>
+			<li>
+				<strong>There is a scar on Zane's forehead.</strong><br>
+				The scar is very visible, and is roughly shaped like a "Y". The origin story of this scar
+				is fascinating and exciting, but Zane never seems to get a chance to tell it.
+			</li>
+			<li>
+				<strong>Zane's preferred exclamation is "Sausages!"</strong><br>
+				Sometimes adjectives or other words are added (for example, "smoked sausages!"). Zane uses it when excited, angry, 
+				and disappointed. Whatever the situation,
+				if an exclamation is required, it's almost always "Sausages!"
+			</li>
+		</ul>
+		
+		<h2>Ready to Write?</h2>
+		
+		<p>
+			If you are ready to get writing an adventure about Zane Legends, just click the button below!
+			A random genre, setting, and secondary character will be selected for you, and the 60-minute
+			countdown will begin.
+		</p>
+		
+		<button type="button" class="btn btn-info btn-lg" onclick="startStory(true)">
+			<i class="fa fa-pencil"></i>
+			Start a Story
+		</button>
+		
+		
+	</div>
+
+
+	
+	<div class="container spacing"></div>
+</div>
+
+
+<div id="footer" class="container text-center">
+	<a href="/tos.html">Terms of Service</a> |
+	<a href="/privacy.html">Privacy Policy</a> |
+	<a href="mailto:support@zanelegends.com">Contact Us</a>
+	<br><br>
+	Except where otherwise noted, content on this website
+	is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+	<br>
+	<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>
+	<br><br>
+	<span class="zane-font big">ZL</span>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	background-color: #AAD4E6;
+	background: url(back.png); /* Credit: http://subtlepatterns.com */
+}
+
+.zane-font {
+	font-family: 'Kaushan Script', 'Open Sans', sans-serif;
+}
+
+.big {
+	font-size: 120%;
+}
+
+.bigger {
+	font-size: 150%;
+}
+
+.biggest {
+	font-size: 200%;
+}
+
+.navbar-brand {
+	font-family: 'Kaushan Script', 'Open Sans', sans-serif;
+	font-size: 20pt;
+}
+
+.zane-header {
+	margin-bottom: 40px;
+}
+
+.zane-header h1 {
+	font-family: 'Kaushan Script', 'Open Sans', sans-serif;
+	font-size: 400%;
+}
+
+#content .container {
+	background-color: white;
+	background-color: rgba(255, 255, 255, 0.6);
+}
+
+#content .container.spacing {
+	height: 45px;
+}
+
+#content h2 {
+	font-family: "Raleway","Helvetica Heue",Helvetica,Arial,sans-serif;
+	font-weight: bold;
+}
+
+#content hr {
+	border-top-color: #ccc;
+}
+
+.criteria .panel-title {
+	font-size: 200%;
+}
+
+.criteria .panel-body p {
+	font-size: 200%;
+}
+
+#content li {
+	padding-bottom: 0.8em;
+}
+
+#content li strong {
+	font-size: 120%;
+}
+
+#footer.container {
+	background-color: #303030;
+	background-color: rgba(50, 50, 50, 0.8);
+	color: white;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+}
+
+#footer a, #footer a:link, #footer a:hover, #footer a:visited {
+	color: #e0e0e0;
+	text-decoration: underline;
+}
+#footer a:hover {
+	color: white;
+	text-decoration: underline;
+}
+
+#storyDiv {
+	margin-top: 10px;
+	margin-bottom: 0;
+	margin-left: auto;
+	margin-right: auto;
+	width: 75%;
+}
+
+#storyBox {
+	padding: 15px;
+	font-size: 12pt;
+	height: 400px;
+	width: 100%;
+}
+
+@media print {
+	body {
+		padding-top: 0;
+	}
+	#footer {
+		display: none;
+	}
+	a[href]:after {
+		content: "";
+	}
+	.print-hidden {
+		display: none;
+	}
+}
