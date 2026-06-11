@@ -1,97 +1,413 @@
+:root {
+	/* Backgrounds */
+	--color-bg-deep:        #13151a;
+	--color-bg-mid:         #1d2129;
+	--color-bg-card:        #252b36;
+	--color-bg-card-header: #181b22;
+
+	/* Accent — aged gold */
+	--color-gold:           #c9a84c;
+	--color-gold-light:     #e8c96e;
+	--color-gold-dim:       #7a6530;
+
+	/* Text */
+	--color-text-primary:   #e8dfc8;
+	--color-text-secondary: #b0a48a;
+	--color-text-heading:   #f2e8d0;
+
+	/* Borders */
+	--color-border:         #2e3440;
+	--color-border-gold:    #7a6530;
+
+	/* Typography */
+	--font-heading:         'Cinzel', Georgia, serif;
+	--font-body:            'Lato', 'Open Sans', sans-serif;
+	--font-decorative:      'Kaushan Script', cursive;
+
+	/* Tokens */
+	--content-max-width:    1000px;
+	--border-radius-card:   4px;
+	--transition-standard:  0.25s ease;
+	--shadow-card:          0 2px 12px rgba(0, 0, 0, 0.6);
+	--shadow-card-hover:    0 6px 20px rgba(201, 168, 76, 0.18);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
 body {
-	font-family: 'Open Sans', sans-serif;
-	font-size: 16px;
-	background-color: #AAD4E6;
-	background: url(back.png); /* Credit: http://subtlepatterns.com */
+	font-family: var(--font-body);
+	font-size: 13pt;
+	line-height: 1.75;
+	color: var(--color-text-primary);
+	background-color: var(--color-bg-deep);
+	background-image:
+		radial-gradient(ellipse at 20% 0%, rgba(201, 168, 76, 0.07) 0%, transparent 55%),
+		radial-gradient(ellipse at 80% 100%, rgba(201, 168, 76, 0.05) 0%, transparent 55%),
+		repeating-linear-gradient(
+			0deg,
+			transparent,
+			transparent 2px,
+			rgba(255, 255, 255, 0.008) 2px,
+			rgba(255, 255, 255, 0.008) 4px
+		);
+	background-attachment: fixed;
+	min-height: 100vh;
+}
+
+/* ---- Typography ---- */
+
+h1, h2, h3, h4 {
+	font-family: var(--font-heading);
+	color: var(--color-text-heading);
+	letter-spacing: 0.04em;
 }
 
 .zane-font {
-	font-family: 'Kaushan Script', 'Open Sans', sans-serif;
+	font-family: var(--font-decorative);
+	color: var(--color-gold);
 }
 
-.big {
-	font-size: 120%;
-}
+.big     { font-size: 1.1em; }
+.bigger  { font-size: 1.5em; }
+.biggest { font-size: 2em; }
 
-.bigger {
-	font-size: 150%;
-}
-
-.biggest {
-	font-size: 200%;
-}
-
-.navbar-brand {
-	font-family: 'Kaushan Script', 'Open Sans', sans-serif;
-	font-size: 20pt;
-}
+/* ---- Hero header ---- */
 
 .zane-header {
-	margin-bottom: 40px;
+	margin-bottom: 1rem;
 }
 
 .zane-header h1 {
-	font-family: 'Kaushan Script', 'Open Sans', sans-serif;
-	font-size: 400%;
+	font-family: var(--font-decorative);
+	color: var(--color-text-heading);
+	line-height: 1.1;
+	margin: 0;
 }
 
+.zane-header h1 .small {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	font-family: var(--font-heading);
+	font-size: 1.1rem;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--color-text-secondary);
+	margin-bottom: 0.35rem;
+}
+
+/* Fading gold rules flanking the subtitle */
+.zane-header h1 .small::before,
+.zane-header h1 .small::after {
+	content: "";
+	height: 1px;
+	width: clamp(24px, 9vw, 80px);
+	background: linear-gradient(to right, transparent, var(--color-gold-dim));
+}
+
+.zane-header h1 .small::after {
+	background: linear-gradient(to left, transparent, var(--color-gold-dim));
+}
+
+.zane-header h1 .biggest {
+	display: block;
+	font-size: 4rem;
+	/* Metallic gold leaf: light highlight at top fading to deep gold */
+	background: linear-gradient(180deg, #f4dd92 0%, #e8c96e 22%, #c9a84c 52%, #9a7d32 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	color: transparent;
+	/* Depth (crisp dark shadow) + warm ambient glow */
+	filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.55))
+	        drop-shadow(0 0 28px rgba(201, 168, 76, 0.4));
+}
+
+/* Ornamental flourish beneath the name */
+.title-flourish {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.85rem;
+	margin-top: 0.6rem;
+	color: var(--color-gold);
+	font-size: 0.8rem;
+}
+
+.title-flourish::before,
+.title-flourish::after {
+	content: "";
+	height: 1px;
+	width: clamp(40px, 14vw, 250px);
+	background: linear-gradient(to right, transparent, var(--color-gold-dim));
+}
+
+.title-flourish::after {
+	background: linear-gradient(to left, transparent, var(--color-gold-dim));
+}
+
+/* ---- Content containers ---- */
+
 #content .container {
-	background-color: white;
-	background-color: rgba(255, 255, 255, 0.6);
+	max-width: var(--content-max-width);
+	margin-left: auto;
+	margin-right: auto;
+	background-color: var(--color-bg-mid);
+	border-left: 1px solid var(--color-border);
+	border-right: 1px solid var(--color-border);
+	padding-top: 1.5rem;
+	padding-bottom: 1.5rem;
 }
 
 #content .container.spacing {
-	height: 45px;
+	height: 32px;
+	background-color: transparent;
+	border: none;
+	padding: 0;
+}
+
+/* Title section — darker background to match the footer */
+#content .container.title-section {
+	background-color: var(--color-bg-card-header);
+	border-bottom: 1px solid var(--color-border-gold);
 }
 
 #content h2 {
-	font-family: "Raleway","Helvetica Heue",Helvetica,Arial,sans-serif;
-	font-weight: bold;
+	font-family: var(--font-heading);
+	font-weight: 700;
+	color: var(--color-gold);
+	font-size: 1.6rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+	border-bottom: 1px solid var(--color-border-gold);
+	padding-bottom: 0.4em;
+}
+
+#content h3 {
+	font-family: var(--font-heading);
+	font-weight: 700;
+	color: var(--color-text-heading);
+	font-size: 1.2rem;
+	letter-spacing: 0.05em;
+	margin-top: 1.5rem;
+}
+
+#content p {
+	color: var(--color-text-primary);
 }
 
 #content hr {
-	border-top-color: #ccc;
-}
-
-.criteria .panel-title {
-	font-size: 200%;
-}
-
-.criteria .panel-body p {
-	font-size: 200%;
+	border: none;
+	border-top: 1px solid var(--color-border-gold);
+	opacity: 0.6;
+	margin: 2rem 0;
 }
 
 #content li {
-	padding-bottom: 0.8em;
+	padding-bottom: 0.75em;
+	color: var(--color-text-primary);
 }
 
 #content li strong {
-	font-size: 120%;
+	font-size: 1.05rem;
+	color: var(--color-text-heading);
 }
+
+#content em {
+	color: var(--color-gold-light);
+}
+
+a {
+	color: var(--color-gold);
+	transition: color var(--transition-standard);
+}
+
+a:hover,
+a:focus {
+	color: var(--color-gold-light);
+	text-decoration: underline;
+}
+
+/* ---- Criteria cards ---- */
+
+.criteria-card {
+	background-color: var(--color-bg-card);
+	border: 1px solid var(--color-border-gold);
+	border-radius: var(--border-radius-card);
+	box-shadow: var(--shadow-card);
+	transition: box-shadow var(--transition-standard), transform var(--transition-standard);
+	overflow: hidden;
+	margin-bottom: 1rem;
+}
+
+.criteria-card:hover {
+	box-shadow: var(--shadow-card-hover);
+	transform: translateY(-2px);
+}
+
+.criteria-card .card-header {
+	background-color: var(--color-bg-card-header);
+	border-bottom: 1px solid var(--color-border-gold);
+	padding: 0.35rem 1rem;
+}
+
+.criteria-card .card-title {
+	font-family: var(--font-heading);
+	font-size: 1.3rem;
+	font-weight: 700;
+	color: var(--color-gold);
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	margin: 0;
+	line-height: 1.4;
+}
+
+.criteria-card .card-title i {
+	margin-right: 0.4rem;
+	color: var(--color-gold-dim);
+}
+
+.criteria-card .card-body {
+	padding: 1.25rem;
+}
+
+.criteria-card .card-body p {
+	font-family: var(--font-heading);
+	font-size: 1.5rem;
+	font-weight: 400;
+	color: var(--color-text-heading);
+	margin: 0;
+	text-align: center;
+	min-height: 2.5rem;
+}
+
+/* ---- Buttons ---- */
+
+.btn-info {
+	background-color: var(--color-gold);
+	border: 1px solid var(--color-gold-dim);
+	color: var(--color-bg-deep);
+	font-family: var(--font-heading);
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	padding: 0.6rem 1.8rem;
+	border-radius: 3px;
+	transition: background-color var(--transition-standard),
+	            box-shadow var(--transition-standard),
+	            transform var(--transition-standard);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.btn-info:hover,
+.btn-info:focus {
+	background-color: var(--color-gold-light);
+	border-color: var(--color-gold);
+	color: var(--color-bg-deep);
+	box-shadow: 0 4px 16px rgba(201, 168, 76, 0.3);
+	transform: translateY(-1px);
+}
+
+.btn-info:active {
+	transform: translateY(0);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.btn-info i {
+	margin-right: 0.4rem;
+}
+
+/* ---- Countdown / progress ---- */
+
+#timeRemaining {
+	font-family: var(--font-heading);
+	font-size: 1.5rem;
+	color: var(--color-gold);
+	letter-spacing: 0.1em;
+}
+
+#endTime {
+	color: var(--color-text-secondary);
+	font-size: 0.9rem;
+	margin-top: 0.25rem;
+}
+
+.progress {
+	background-color: var(--color-bg-card-header);
+	border: 1px solid var(--color-border-gold);
+	border-radius: 3px;
+	height: 1.5rem;
+	overflow: hidden;
+	margin: 0.75rem 0;
+}
+
+.progress-bar {
+	background-color: var(--color-gold);
+	background-image: none;
+	transition: width 1s linear;
+}
+
+.progress-bar-striped {
+	background-image: linear-gradient(
+		45deg,
+		rgba(19, 21, 26, 0.18) 25%,
+		transparent 25%,
+		transparent 50%,
+		rgba(19, 21, 26, 0.18) 50%,
+		rgba(19, 21, 26, 0.18) 75%,
+		transparent 75%,
+		transparent
+	);
+	background-size: 1rem 1rem;
+}
+
+/* ---- Footer ---- */
 
 #footer.container {
-	background-color: #303030;
-	background-color: rgba(50, 50, 50, 0.8);
-	color: white;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	margin-bottom: 20px;
+	max-width: var(--content-max-width);
+	background-color: var(--color-bg-card-header);
+	border-top: 1px solid var(--color-border-gold);
+	color: var(--color-text-secondary);
+	padding-top: 1.25rem;
+	padding-bottom: 1.25rem;
+	margin-bottom: 0;
+	font-size: 0.875rem;
 }
 
-#footer a, #footer a:link, #footer a:hover, #footer a:visited {
-	color: #e0e0e0;
+#footer a,
+#footer a:link,
+#footer a:visited {
+	color: var(--color-gold-dim);
 	text-decoration: underline;
 }
+
 #footer a:hover {
-	color: white;
+	color: var(--color-gold);
 	text-decoration: underline;
 }
+
+#footer .zane-font.big {
+	display: block;
+	font-size: 1.6rem;
+	color: var(--color-gold);
+	margin-top: 0.5rem;
+}
+
+/* ---- Story box (writing area) ---- */
 
 #storyDiv {
-	margin-top: 10px;
-	margin-bottom: 0;
-	margin-left: auto;
-	margin-right: auto;
+	margin: 10px auto 0;
 	width: 75%;
 }
 
@@ -100,16 +416,43 @@ body {
 	font-size: 12pt;
 	height: 400px;
 	width: 100%;
+	background-color: var(--color-bg-card);
+	border: 1px solid var(--color-border-gold);
+	color: var(--color-text-primary);
 }
+
+/* ---- Responsive ---- */
+
+@media (max-width: 576px) {
+	.zane-header h1 .biggest {
+		font-size: 2.5rem;
+	}
+
+	.criteria-card .card-title {
+		font-size: 1.1rem;
+	}
+
+	.criteria-card .card-body p {
+		font-size: 1.3rem;
+	}
+}
+
+/* ---- Print ---- */
 
 @media print {
 	body {
+		background: white;
+		color: black;
 		padding-top: 0;
+	}
+	#content .container {
+		background: white;
+		border: none;
 	}
 	#footer {
 		display: none;
 	}
-	a[href]:after {
+	a[href]::after {
 		content: "";
 	}
 	.print-hidden {
