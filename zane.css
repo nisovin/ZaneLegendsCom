@@ -249,6 +249,10 @@ a:focus {
 	transition: box-shadow var(--transition-standard), transform var(--transition-standard);
 	overflow: hidden;
 	margin-bottom: 1rem;
+	/* Fill the column so cards in the same row match the tallest one.
+	   When stacked on narrow screens each card is on its own row line,
+	   so this has no equalizing effect there. */
+	height: 100%;
 }
 
 .criteria-card:hover {
@@ -262,14 +266,16 @@ a:focus {
 	padding: 0.35rem 1rem;
 }
 
-.criteria-card .card-title {
+/* #content prefix needed so this outranks `#content h3` (ID specificity),
+   which would otherwise bleed its margin-top onto the card titles */
+#content .criteria-card .card-title {
 	font-family: var(--font-heading);
 	font-size: 1.3rem;
 	font-weight: 700;
 	color: var(--color-gold);
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
-	margin: 0;
+	margin: 0.5rem 0;
 	line-height: 1.4;
 }
 
@@ -280,6 +286,10 @@ a:focus {
 
 .criteria-card .card-body {
 	padding: 1.25rem;
+	/* Grow to fill the equalized card height and vertically center the value */
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .criteria-card .card-body p {
