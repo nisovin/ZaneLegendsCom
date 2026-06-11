@@ -89,11 +89,11 @@ function randomlySelect() {
 	let genre = pickRandom(genres);
 	let setting = pickRandom(settings);
 	let character = pickRandom(characters);
-	
+
 	localStorage['genre'] = genre;
 	localStorage['setting'] = setting;
 	localStorage['character'] = character;
-	
+
 	seconds = 60 * 60;
 }
 
@@ -101,14 +101,21 @@ function start() {
 	countdown();
 	clearInterval(timeout);
 	timeout = setInterval(countdown, 1000);
-	
+
 	document.getElementById('genre').innerText = localStorage.genre;
 	document.getElementById('setting').innerText = localStorage.setting;
 	document.getElementById('character').innerText = localStorage.character;
-	
+
 	document.getElementById('storyPrep').style.display = 'none';
 	document.getElementById('storyCriteria').style.display = 'block';
-	
+
+	if (seconds > 0) {
+		let t = new Date();
+		t.setSeconds(t.getSeconds() + seconds);
+		let endTime = t.toLocaleTimeString();
+		endTime = endTime.replace(/:[0-9]{2}( |$)/, '');
+		document.getElementById('endTime').innerHTML = 'Time will run out at ' + endTime + '.';
+	}
 }
 
 function pickRandom(array) {
@@ -116,19 +123,11 @@ function pickRandom(array) {
 	return array[i];
 }
 
-if (seconds > 0) {
-	let t = new Date();
-	t.setSeconds(t.getSeconds() + seconds);
-	let endTime = t.toLocaleTimeString();
-	endTime = endTime.replace(/:[0-9]{2}( |$)/, '');
-	document.getElementById('endTime').innerHTML = 'Time will run out at ' + endTime + '.';
-}
-
 function countdown() {
 	seconds--;
 	localStorage['seconds'] = seconds;
 	if (seconds <= 0) {
-		document.getElementById('timeRemaining').innerText = "TIME'S UP!";
+		document.getElementById('timeRemaining').innerText = "Sausages! You did it!";
 		document.getElementById('progressBar').style.width = '0';
 		clearInterval(timeout);
 		localStorage.clear();
