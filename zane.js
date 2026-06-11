@@ -74,6 +74,37 @@ const characters = [
 	"Writer/Storyteller"
 ];
 
+const constraints = [
+	// Trait-interaction (Zane-specific)
+	"Zane must face a staircase",
+	"Zane has to go without food",
+	"Zane gets hopelessly lost",
+	"Zane's impulsiveness must cause the central problem",
+	"End with Zane shouting his catchphrase",
+	// Required element
+	"Include a locked door",
+	"Include a sudden storm",
+	"Something important breaks",
+	"Something goes missing",
+	"Include a chase",
+	"A secret is revealed",
+	"Include a message or letter",
+	"Include a countdown or deadline",
+	// Ending
+	"End on a twist",
+	"End on a cliffhanger",
+	"End worse than it began",
+	"End with a revelation",
+	// Tone & craft
+	"Make it funny",
+	"Make it eerie",
+	"Make it bittersweet",
+	"Tell it mostly through dialogue",
+	"Keep the whole story in one location",
+	"Write it in present tense",
+	"Write in first-person"
+];
+
 let seconds = 0;
 let timeout = null;
 
@@ -93,6 +124,7 @@ function randomlySelect() {
 	localStorage['genre'] = genre;
 	localStorage['setting'] = setting;
 	localStorage['character'] = character;
+	localStorage['constraint'] = pickRandom(constraints);
 
 	seconds = 60 * 60;
 }
@@ -105,6 +137,7 @@ function start() {
 	document.getElementById('genre').innerText = localStorage.genre;
 	document.getElementById('setting').innerText = localStorage.setting;
 	document.getElementById('character').innerText = localStorage.character;
+	document.getElementById('constraint').innerText = localStorage.constraint || '';
 
 	document.getElementById('storyPrep').style.display = 'none';
 	document.getElementById('storyCriteria').style.display = 'block';
