@@ -82,7 +82,7 @@ h1, h2, h3, h4 {
 /* ---- Hero header ---- */
 
 .zane-header {
-	margin-top: 1rem;
+	margin-top: 1.2rem;
 	margin-bottom: 1rem;
 }
 
@@ -103,7 +103,6 @@ h1, h2, h3, h4 {
 	letter-spacing: 0.18em;
 	text-transform: uppercase;
 	color: var(--color-text-secondary);
-	margin-bottom: 0.35rem;
 }
 
 /* Fading gold rules flanking the subtitle */
@@ -226,7 +225,6 @@ a:focus {
 	box-shadow: var(--shadow-card);
 	transition: box-shadow var(--transition-standard), transform var(--transition-standard);
 	overflow: hidden;
-	margin-bottom: 1rem;
 	height: 100%;
 }
 
