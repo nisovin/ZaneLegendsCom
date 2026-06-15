@@ -307,6 +307,66 @@ a:focus {
 	margin: 0.4rem 0 0;
 }
 
+/* ---- Protagonist selector ---- */
+
+.protagonist-select {
+	border: none;
+	margin: 0 0 1.25rem;
+	padding: 0;
+}
+
+.protagonist-select legend {
+	float: none;
+	width: auto;
+	font-family: var(--font-heading);
+	font-size: 1rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--color-gold-dim);
+	margin-bottom: 0.5rem;
+	border: none;
+}
+
+#protagonistOptions {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+}
+
+.protagonist-option {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45rem;
+	padding: 0.4rem 1rem;
+	border: 1px solid var(--color-border-gold);
+	border-radius: 999px;
+	cursor: pointer;
+	font-family: var(--font-heading);
+	color: var(--color-text-secondary);
+	transition: border-color var(--transition-standard),
+	            color var(--transition-standard),
+	            background-color var(--transition-standard);
+}
+
+.protagonist-option input {
+	accent-color: var(--color-gold);
+	cursor: pointer;
+}
+
+/* Highlight the selected pill */
+.protagonist-option:has(input:checked) {
+	border-color: var(--color-gold);
+	color: var(--color-text-heading);
+	background-color: rgba(201, 168, 76, 0.12);
+}
+
+.protagonist-option:hover {
+	border-color: var(--color-gold);
+	color: var(--color-text-heading);
+}
+
 /* ---- Buttons ---- */
 
 .btn-info {

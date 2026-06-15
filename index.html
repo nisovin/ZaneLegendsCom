@@ -29,7 +29,7 @@
 		<div class="zane-header">
 			<h1>
 				<span class="small">The Many Adventures of</span>
-				<span class="biggest">Zane Legends</span>
+				<span class="biggest protagonist-name">Zane Legends</span>
 			</h1>
 		</div>
 	</div>
@@ -55,22 +55,29 @@
 		<div id="storyPrep">
 
 			<p>
-				If you are ready to get writing an adventure about Zane Legends, just click the button below!
+				If you are ready to get writing an adventure about <span class="protagonist-name">Zane Legends</span>, just click the button below!
 				A random genre, setting, and secondary character will be selected for you, and the 60-minute
 				countdown will begin.
 			</p>
 
-			<button type="button" class="btn btn-info btn-lg" onclick="startStory()">
-				<i class="fa-solid fa-pencil"></i>
-				Start a Story
-			</button>
+			<fieldset class="protagonist-select">
+				<legend>Who is the story about?</legend>
+				<div id="protagonistOptions"></div>
+			</fieldset>
+
+			<div class="text-center">
+				<button type="button" class="btn btn-info btn-lg" onclick="startStory()">
+					<i class="fa-solid fa-pencil"></i>
+					Start a Story
+				</button>
+			</div>
 
 		</div>
 
 		<div id="storyCriteria" style="display: none">
 
 			<p>
-				Write a story about Zane Legends using the following randomly-selected criteria!
+				Write a story about <span class="protagonist-name">Zane Legends</span> using the following randomly-selected criteria!
 			</p>
 
 			<div class="text-center criteria">
@@ -133,15 +140,15 @@
 		<h2 id="rulesForWriting">Rules for Writing</h2>
 
 		<p>
-			If you want to write a Zane Legends story, you should try to follow the rules below.
+			If you want to write a <span class="protagonist-name">Zane Legends</span> story, you should try to follow the rules below.
 			These rules are to give direction and help increase your creativity. Try not to think
 			of the rules as limitations, instead think of them as a way to help you write a story.
 		</p>
 
 		<ol>
 			<li>
-				<strong>Use the same opening for each Zane story.</strong><br>
-				<em>Some people have a knack for finding strange things. Strange things always seem
+				<strong>Use the same opening for each story.</strong><br>
+				<em id="openingLine">Some people have a knack for finding strange things. Strange things always seem
 				to find Zane Legends.</em><br>
 				You should always start with this opening, and type it out by hand. Don&rsquo;t copy
 				and paste! This allows you to get your fingers on the keyboard and start writing. Once
@@ -171,8 +178,8 @@
 				Don&rsquo;t allow yourself to go over, this is part of the challenge!
 			</li>
 			<li>
-				<strong>Include some of Zane&rsquo;s character traits.</strong><br>
-				This rule isn&rsquo;t as important, but it helps every Zane adventure feel like
+				<strong>Include some of <span class="protagonist-first">Zane</span>&rsquo;s character traits.</strong><br>
+				This rule isn&rsquo;t as important, but it helps every <span class="protagonist-first">Zane</span> adventure feel like
 				it is about the same person. See the <a href="#traitsOfZane">list of traits</a> below.
 			</li>
 		</ol>
@@ -191,7 +198,7 @@
 		<p>
 			Examples of settings are &ldquo;on a beach&rdquo;, &ldquo;at night&rdquo;, and &ldquo;underground&rdquo;. These generally serve as
 			a location or situation for your story. You aren&rsquo;t required to use the setting for the entire
-			story, and you can have Zane go to other places. However, the chosen setting should be an
+			story, and you can have <span class="protagonist-first">Zane</span> go to other places. However, the chosen setting should be an
 			important part of the story.
 		</p>
 
@@ -203,60 +210,24 @@
 			and words, so don&rsquo;t introduce too many characters or you won&rsquo;t finish the story!
 		</p>
 
-		<h2 id="traitsOfZane">Traits of Zane Legends</h2>
+		<h2 id="traitsOfZane">Traits of <span class="protagonist-name">Zane Legends</span></h2>
 
-		<ul>
-			<li>
-				<strong>Zane is afraid of stairs.</strong><br>
-				This is not a simple fear but a debilitating phobia. Zane is absolutely terrified
-				of stairs of all kinds, and will avoid them at all costs.
-			</li>
-			<li>
-				<strong>Zane loves to eat.</strong><br>
-				It doesn&rsquo;t matter what it is, where it came from, or whether it was
-				actually offered to him. If it&rsquo;s edible, Zane will try it, and he'll almost
-				always go back for seconds.
-			</li>
-			<li>
-				<strong>Zane is impulsive.</strong><br>
-				He tends to leap into any situation that presents itself without thinking too much about it.
-				He gets himself into trouble, and has to figure out how to get back out of it again.
-			</li>
-			<li>
-				<strong>Zane has an excellent sense of direction.</strong><br>
-				It is also reliably wrong. He will set off without hesitation, leading the way with total
-				confidence, and almost never in the right direction.
-			</li>
-			<li>
-				<strong>There is an interesting scar on Zane&rsquo;s forehead.</strong><br>
-				The scar is very visible, and is roughly shaped like a &ldquo;Y&rdquo;. The origin story of this scar
-				is fascinating and exciting, but Zane never seems to get a chance to tell it.
-			</li>
-			<li>
-				<strong>Zane often carries a ring of keys.</strong><br>
-				There are dozens of them, of all shapes and sizes, and he has no idea what most of them
-				open. Every so often, though, one of them fits a lock perfectly.
-			</li>
-			<li>
-				<strong>Zane&rsquo;s preferred exclamation is &ldquo;Sausages!&rdquo;</strong><br>
-				Sometimes adjectives or other words are added (for example, &ldquo;smoked sausages!&rdquo;).
-				Zane uses it when excited, angry, or disappointed. Whatever the situation,
-				if an exclamation is required, it&rsquo;s almost always &ldquo;Sausages!&rdquo;
-			</li>
-		</ul>
+		<ul id="traitsList"></ul>
 
 		<h2>Ready to Write?</h2>
 
 		<p>
-			If you are ready to get writing an adventure about Zane Legends, just click the button below!
+			If you are ready to get writing an adventure about <span class="protagonist-name">Zane Legends</span>, just click the button below!
 			A random genre, setting, and secondary character will be selected for you, and the 60-minute
 			countdown will begin.
 		</p>
 
-		<button type="button" class="btn btn-info btn-lg" onclick="startStory(true)">
-			<i class="fa-solid fa-pencil"></i>
-			Start a Story
-		</button>
+		<div class="text-center">
+			<button type="button" class="btn btn-info btn-lg" onclick="startStory(true)">
+				<i class="fa-solid fa-pencil"></i>
+				Start a Story
+			</button>
+		</div>
 
 
 	</div>
