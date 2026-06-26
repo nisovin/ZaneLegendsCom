@@ -133,6 +133,7 @@ const protagonists = {
 };
 
 const defaultProtagonist = "zane";
+const documentTitle = 'Zane Legends - Writing Exercise';
 
 function getProtagonistKey() {
 	let checked = document.querySelector('input[name="protagonist"]:checked');
@@ -254,6 +255,7 @@ function countdown() {
 		progressBar.setAttribute('aria-valuenow', 0);
 		clearInterval(timeout);
 		localStorage.clear();
+		document.title = documentTitle;
 	} else {
 		let min = Math.floor(seconds / 60);
 		let sec = seconds - (min*60);
@@ -262,6 +264,7 @@ function countdown() {
 		document.getElementById('timeRemaining').innerText = time;
 		progressBar.style.width = pct + '%';
 		progressBar.setAttribute('aria-valuenow', seconds);
+		document.title = time + ' | ' + documentTitle;
 	}
 }
 
