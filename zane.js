@@ -105,7 +105,7 @@ const protagonists = {
 		first: "Zane",
 		opening: "Some people have a knack for finding strange things. Strange things always seem to find Zane Legends.",
 		traits: [
-			["Zane is afraid of stairs.", "This is not a simple fear but a debilitating phobia. Zane is absolutely terrified of stairs of all kinds, and will avoid them at all costs."],
+			["Zane is afraid of stairs.", "This is not a simple fear but a genuine phobia. Zane is absolutely terrified of stairs of all kinds, and will avoid them at all costs."],
 			["Zane loves to eat.", "It doesn&rsquo;t matter what it is, where it came from, or whether it was actually offered to him. If it&rsquo;s edible, Zane will try it, and he&rsquo;ll almost always go back for seconds."],
 			["Zane is impulsive.", "He tends to leap into any situation that presents itself without thinking too much about it. He gets himself into trouble, and has to figure out how to get back out of it again."],
 			["Zane has an excellent sense of direction.", "It is also reliably wrong. He will set off without hesitation, leading the way with total confidence, and almost never in the right direction."],
@@ -119,7 +119,7 @@ const protagonists = {
 		first: "Jane",
 		opening: "Some people go looking for adventure. Adventure always seems to come looking for Jane Legends.",
 		traits: [
-			["Jane is afraid of clocks.", "This is not a simple unease but a genuine dread. Jane cannot stand to be near any clock, and will go out of her way to avoid them."],
+			["Jane is afraid of clocks.", "This is not a simple fear but a genuine phobia. Jane cannot stand to be near any clock, and will go out of her way to avoid them."],
 			["Jane loves to eat.", "Jane fancies herself a great connoisseur, and will deliver a full review of every meal, whether anyone asked for it or not."],
 			["Jane is stubborn.", "Once she has decided on something, nothing on earth will talk her out of it. This gets her into trouble, and then keeps her there long after she should have walked away."],
 			["Jane always knows where she is.", "She simply never knows where she is going. She will set off with total confidence, and lead everyone somewhere else entirely by accident."],

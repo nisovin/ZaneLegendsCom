@@ -317,15 +317,15 @@ a:focus {
 
 .protagonist-select legend {
 	float: none;
-	width: auto;
 	font-family: var(--font-heading);
 	font-size: 1rem;
 	font-weight: 700;
 	letter-spacing: 0.12em;
 	text-transform: uppercase;
-	color: var(--color-gold-dim);
+	color: var(--color-gold);
 	margin-bottom: 0.5rem;
 	border: none;
+	text-align: center;
 }
 
 #protagonistOptions {
