@@ -25,6 +25,7 @@
 
 	<link rel="stylesheet" href="zane.css">
 
+	<script defer src="editor.js"></script>
 	<script defer src="zane.js"></script>
 
 </head>
@@ -136,6 +137,24 @@
 				</div>
 				<div id="endTime"></div>
 				<br>
+			</div>
+
+			<div id="writingArea">
+				<input type="text" id="storyTitle" placeholder="Story title (optional)" autocomplete="off">
+				<div class="editor-toolbar">
+					<button type="button" class="editor-tool" onmousedown="event.preventDefault()" onclick="format('bold')" aria-label="Bold" title="Bold (Ctrl+B)"><i class="fa-solid fa-bold"></i></button>
+					<button type="button" class="editor-tool" onmousedown="event.preventDefault()" onclick="format('italic')" aria-label="Italic" title="Italic (Ctrl+I)"><i class="fa-solid fa-italic"></i></button>
+					<button type="button" class="editor-tool" onmousedown="event.preventDefault()" onclick="format('underline')" aria-label="Underline" title="Underline (Ctrl+U)"><i class="fa-solid fa-underline"></i></button>
+					<button type="button" class="editor-tool" onmousedown="event.preventDefault()" onclick="insertSeparator()" aria-label="Scene break" title="Scene break"><i class="fa-solid fa-grip-lines"></i></button>
+				</div>
+				<div id="storyEditor" contenteditable="true" data-placeholder="Start typing your story here&hellip;" aria-label="Story text"></div>
+				<div class="editor-footer">
+					<span id="wordCount">0 / 1500 words</span>
+					<span class="editor-actions">
+						<button type="button" class="btn-secondary" onclick="downloadStory()"><i class="fa-solid fa-download"></i> Download</button>
+						<button type="button" class="btn-secondary" id="copyBtn" onclick="copyStory()"><i class="fa-solid fa-copy"></i> Copy</button>
+					</span>
+				</div>
 			</div>
 
 			<div class="text-center">

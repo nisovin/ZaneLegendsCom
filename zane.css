@@ -402,6 +402,151 @@ a:focus {
 	margin-right: 0.4rem;
 }
 
+/* ---- Story editor ---- */
+
+#writingArea {
+	max-width: 720px;
+	margin: 1.75rem auto 0;
+	text-align: left;
+}
+
+#storyTitle {
+	width: 100%;
+	margin-bottom: 0.6rem;
+	padding: 0.5rem 0.75rem;
+	font-family: var(--font-heading);
+	font-size: 1.1rem;
+	color: var(--color-text-heading);
+	background-color: var(--color-bg-card);
+	border: 1px solid var(--color-border-gold);
+	border-radius: 3px;
+}
+
+#storyTitle::placeholder {
+	color: var(--color-text-secondary);
+}
+
+.editor-toolbar {
+	display: flex;
+	gap: 0.4rem;
+	padding: 0.4rem;
+	background-color: var(--color-bg-card-header);
+	border: 1px solid var(--color-border-gold);
+	border-bottom: none;
+	border-radius: 3px 3px 0 0;
+}
+
+.editor-tool {
+	width: 2rem;
+	height: 2rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--color-gold);
+	background-color: transparent;
+	border: 1px solid var(--color-border-gold);
+	border-radius: 3px;
+	cursor: pointer;
+	transition: background-color var(--transition-standard), color var(--transition-standard);
+}
+
+.editor-tool:hover {
+	background-color: rgba(201, 168, 76, 0.15);
+	color: var(--color-gold-light);
+}
+
+#storyEditor {
+	min-height: 400px;
+	padding: 1rem 1.1rem;
+	font-family: var(--font-body);
+	font-size: 1.05rem;
+	line-height: 1.75;
+	color: var(--color-text-primary);
+	background-color: var(--color-bg-card);
+	border: 1px solid var(--color-border-gold);
+	border-radius: 0 0 3px 3px;
+	overflow-wrap: break-word;
+}
+
+#storyEditor:focus {
+	outline: none;
+	border-color: var(--color-gold);
+	box-shadow: 0 0 0 1px var(--color-gold);
+}
+
+#storyEditor:empty::before {
+	content: attr(data-placeholder);
+	color: var(--color-text-secondary);
+	font-style: italic;
+}
+
+#storyEditor p {
+	margin: 0 0 1em;
+}
+
+#storyEditor p:last-child {
+	margin-bottom: 0;
+}
+
+/* Scene-break separator */
+#storyEditor hr {
+	border: none;
+	border-top: 1px solid var(--color-border-gold);
+	width: 40%;
+	margin: 1.5rem auto;
+}
+
+.editor-footer {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 0.6rem;
+}
+
+#wordCount {
+	font-family: var(--font-heading);
+	font-size: 0.95rem;
+	color: var(--color-text-secondary);
+}
+
+#wordCount.over-limit {
+	color: #e06c6c;
+	font-weight: 700;
+}
+
+.editor-actions {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.btn-secondary {
+	font-family: var(--font-heading);
+	font-size: 0.85rem;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: var(--color-gold);
+	background-color: transparent;
+	border: 1px solid var(--color-gold-dim);
+	border-radius: 3px;
+	padding: 0.4rem 0.9rem;
+	cursor: pointer;
+	transition: background-color var(--transition-standard),
+	            color var(--transition-standard),
+	            border-color var(--transition-standard);
+}
+
+.btn-secondary:hover {
+	background-color: var(--color-gold);
+	color: var(--color-bg-deep);
+	border-color: var(--color-gold);
+}
+
+.btn-secondary i {
+	margin-right: 0.35rem;
+}
+
 /* ---- Countdown / progress ---- */
 
 #timeRemaining {
@@ -538,5 +683,23 @@ a:focus {
 	}
 	.print-hidden {
 		display: none;
+	}
+	/* Print just the story text, not the editor chrome */
+	.editor-toolbar,
+	.editor-footer {
+		display: none;
+	}
+	#storyEditor {
+		min-height: 0;
+		border: none;
+		padding: 0;
+		background: white;
+		color: black;
+	}
+	#storyTitle {
+		border: none;
+		background: white;
+		color: black;
+		padding: 0;
 	}
 }

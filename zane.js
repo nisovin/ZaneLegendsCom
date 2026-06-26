@@ -147,11 +147,16 @@ let endAt = 0;
 let timeout = null;
 
 function startStory(toTop) {
+	if (getEditorText().trim() && !confirm('Start a new story? This will clear your current draft.')) {
+		return;
+	}
+	clearEditor();
 	randomlySelect();
 	start();
 	if (toTop) {
 		document.getElementById('readyToWrite').scrollIntoView();
 	}
+	focusStoryTitle();
 }
 
 function randomlySelect() {
@@ -168,19 +173,23 @@ function randomlySelect() {
 	seconds = 60 * 60;
 }
 
+function showCriteria() {
+	document.getElementById('genre').innerText = localStorage.genre || '';
+	document.getElementById('setting').innerText = localStorage.setting || '';
+	document.getElementById('character').innerText = localStorage.character || '';
+	document.getElementById('constraint').innerText = localStorage.constraint || '';
+
+	document.getElementById('storyPrep').style.display = 'none';
+	document.getElementById('storyCriteria').style.display = 'block';
+}
+
 function start() {
 	endAt = Date.now() + seconds * 1000;
 	countdown();
 	clearInterval(timeout);
 	timeout = setInterval(countdown, 250);
 
-	document.getElementById('genre').innerText = localStorage.genre;
-	document.getElementById('setting').innerText = localStorage.setting;
-	document.getElementById('character').innerText = localStorage.character;
-	document.getElementById('constraint').innerText = localStorage.constraint || '';
-
-	document.getElementById('storyPrep').style.display = 'none';
-	document.getElementById('storyCriteria').style.display = 'block';
+	showCriteria();
 
 	if (seconds > 0) {
 		let t = new Date();
@@ -254,7 +263,7 @@ function countdown() {
 		progressBar.style.width = '0';
 		progressBar.setAttribute('aria-valuenow', 0);
 		clearInterval(timeout);
-		localStorage.clear();
+		localStorage['seconds'] = 0;
 		document.title = documentTitle;
 	} else {
 		let min = Math.floor(seconds / 60);
@@ -269,17 +278,41 @@ function countdown() {
 }
 
 function reset() {
+	if (getEditorText().trim() && !confirm('Start over? This will clear your current story.')) {
+		return;
+	}
 	clearInterval(timeout);
+	clearSession();
+	clearEditor();
 	document.getElementById('storyPrep').style.display = 'block';
 	document.getElementById('storyCriteria').style.display = 'none';
-	localStorage.clear();
+	document.title = documentTitle;
+}
+
+// Removes the rolled-prompt/timer keys but leaves the story draft alone.
+function clearSession() {
+	['genre', 'setting', 'character', 'constraint', 'protagonist', 'seconds'].forEach(function (k) {
+		localStorage.removeItem(k);
+	});
+}
+
+// Restore a session (mid-timer or finished) plus the saved draft on page load.
+function restoreSession() {
+	if (!localStorage.genre) return;
+	let stored = parseInt(localStorage.seconds);
+	if (!isNaN(stored) && stored > 0) {
+		seconds = stored;
+		start();
+	} else {
+		showCriteria();
+		let key = localStorage.protagonist || getProtagonistKey();
+		document.getElementById('timeRemaining').innerText = protagonists[key].catchphrase + ' You did it!';
+		document.getElementById('progressBar').style.width = '0';
+		document.getElementById('progressBar').setAttribute('aria-valuenow', 0);
+		document.getElementById('endTime').innerText = '';
+	}
 }
 
 renderProtagonistOptions();
-
-setTimeout(() => {
-	if (localStorage.seconds) {
-		seconds = parseInt(localStorage.seconds);
-		start();
-	}
-}, 250);
+initEditor();
+restoreSession();
