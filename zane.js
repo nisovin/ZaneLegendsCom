@@ -103,6 +103,7 @@ const protagonists = {
 	zane: {
 		name: "Zane Legends",
 		first: "Zane",
+		catchphrase: "Sausages!",
 		opening: "Some people have a knack for finding strange things. Strange things always seem to find Zane Legends.",
 		traits: [
 			["Zane is afraid of stairs.", "This is not a simple fear but a genuine phobia. Zane is absolutely terrified of stairs of all kinds, and will avoid them at all costs."],
@@ -117,6 +118,7 @@ const protagonists = {
 	jane: {
 		name: "Jane Legends",
 		first: "Jane",
+		catchphrase: "Biscuits!",
 		opening: "Some people go looking for adventure. Adventure always seems to come looking for Jane Legends.",
 		traits: [
 			["Jane is afraid of clocks.", "This is not a simple fear but a genuine phobia. Jane cannot stand to be near any clock, and will go out of her way to avoid them."],
@@ -140,6 +142,7 @@ function getProtagonistKey() {
 }
 
 let seconds = 0;
+let endAt = 0;
 let timeout = null;
 
 function startStory(toTop) {
@@ -165,9 +168,10 @@ function randomlySelect() {
 }
 
 function start() {
+	endAt = Date.now() + seconds * 1000;
 	countdown();
 	clearInterval(timeout);
-	timeout = setInterval(countdown, 1000);
+	timeout = setInterval(countdown, 250);
 
 	document.getElementById('genre').innerText = localStorage.genre;
 	document.getElementById('setting').innerText = localStorage.setting;
@@ -240,11 +244,14 @@ function applyProtagonist(key) {
 }
 
 function countdown() {
-	seconds--;
+	seconds = Math.round((endAt - Date.now()) / 1000);
 	localStorage['seconds'] = seconds;
+	let progressBar = document.getElementById('progressBar');
 	if (seconds <= 0) {
-		document.getElementById('timeRemaining').innerText = "Sausages! You did it!";
-		document.getElementById('progressBar').style.width = '0';
+		let key = localStorage.protagonist || getProtagonistKey();
+		document.getElementById('timeRemaining').innerText = protagonists[key].catchphrase + " You did it!";
+		progressBar.style.width = '0';
+		progressBar.setAttribute('aria-valuenow', 0);
 		clearInterval(timeout);
 		localStorage.clear();
 	} else {
@@ -253,7 +260,8 @@ function countdown() {
 		let time = min + ':' + (sec < 10 ? '0' : '') + sec;
 		let pct = seconds / (60*60) * 100;
 		document.getElementById('timeRemaining').innerText = time;
-		document.getElementById('progressBar').style.width = pct + '%';
+		progressBar.style.width = pct + '%';
+		progressBar.setAttribute('aria-valuenow', seconds);
 	}
 }
 

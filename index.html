@@ -6,6 +6,13 @@
 
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="A one-hour writing exercise: roll a random genre, setting, and secondary character, then write and finish a short story about Zane (or Jane) Legends before the timer runs out.">
+
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="The Many Adventures of Zane Legends">
+	<meta property="og:description" content="A one-hour writing exercise. Roll a random genre, setting, and character, then write and finish a short story before the timer runs out.">
+	<meta property="og:image" content="https://zanelegends.com/zl_big.png">
+	<meta property="og:url" content="https://zanelegends.com/">
 
 	<link rel="icon" type="image/png" href="zl_big.png">
 
@@ -29,7 +36,7 @@
 		<div class="zane-header">
 			<h1>
 				<span class="small">The Many Adventures of</span>
-				<span class="biggest protagonist-name">Zane Legends</span>
+				<span class="biggest">Zane Legends</span>
 			</h1>
 		</div>
 	</div>
@@ -124,16 +131,18 @@
 			<div class="text-center">
 				<h3>Time Remaining: <span id="timeRemaining"></span></h3>
 				<div class="progress">
-					<div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%">
+					<div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%" role="progressbar" aria-label="Time remaining" aria-valuemin="0" aria-valuemax="3600" aria-valuenow="3600">
 					</div>
 				</div>
 				<div id="endTime"></div>
 				<br>
 			</div>
 
-			<button type="button" class="btn btn-info btn-lg" onclick="reset()">
-				Reset
-			</button>
+			<div class="text-center">
+				<button type="button" class="btn btn-info btn-lg" onclick="reset()">
+					Reset
+				</button>
+			</div>
 
 		</div>
 
@@ -210,6 +219,13 @@
 			and words, so don&rsquo;t introduce too many characters or you won&rsquo;t finish the story!
 		</p>
 
+		<h3>Optional Challenge</h3>
+		<p>
+			The <em>optional</em> challenge is a bonus constraint to push your creativity a little further.
+			It can be challenges such as &ldquo;end on a twist&rdquo; or
+			&ldquo;include a locked door&rdquo;. Work it in or ignore it entirely, it&rsquo;s up to you.
+		</p>
+
 		<h2 id="traitsOfZane">Traits of <span class="protagonist-name">Zane Legends</span></h2>
 
 		<ul id="traitsList"></ul>
@@ -217,9 +233,9 @@
 		<h2>Ready to Write?</h2>
 
 		<p>
-			If you are ready to get writing an adventure about <span class="protagonist-name">Zane Legends</span>, just click the button below!
+			If you are ready to write a <span class="protagonist-name">Zane Legends</span> adventure, just click the button below!
 			A random genre, setting, and secondary character will be selected for you, and the 60-minute
-			countdown will begin.
+			timer will begin.
 		</p>
 
 		<div class="text-center">
@@ -243,12 +259,10 @@
 	Except where otherwise noted, content on this website
 	is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
 	<br>
-	<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>
+	<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>
 	<br><br>
 	<span class="zane-font big">ZL</span>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
 </body>
 
