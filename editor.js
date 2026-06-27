@@ -139,6 +139,38 @@ function sanitizeStoryHtml(html) {
 	return tmp.innerHTML;
 }
 
+// Convert the editor's formatting to markdown-style text for the plain-text copy.
+function htmlToMarkdown(html) {
+	let tmp = document.createElement('div');
+	tmp.innerHTML = html;
+
+	function renderChildren(node) {
+		let out = '';
+		node.childNodes.forEach(function (child) { out += render(child); });
+		return out;
+	}
+
+	function render(node) {
+		if (node.nodeType === 3) return node.nodeValue;        // text node
+		if (node.nodeType !== 1) return '';
+		if (node.tagName === 'BR') return '\n';
+		if (node.tagName === 'HR') return '\n\n---\n\n';
+		let inner = renderChildren(node);
+		switch (node.tagName) {
+			case 'B': case 'STRONG': return inner ? '**' + inner + '**' : '';
+			case 'I': case 'EM':     return inner ? '*' + inner + '*' : '';
+			case 'U':                return inner ? '<u>' + inner + '</u>' : '';
+			case 'P': case 'DIV':    return inner + '\n\n';
+			default:                 return inner;
+		}
+	}
+
+	return renderChildren(tmp)
+		.replace(/[ \t]+\n/g, '\n')   // trim trailing spaces on lines
+		.replace(/\n{3,}/g, '\n\n')   // collapse runs of blank lines
+		.trim();
+}
+
 function getSessionPrompt() {
 	let key = localStorage.protagonist || getProtagonistKey();
 	return {
@@ -169,15 +201,16 @@ function buildShareHtml(title, p, storyHtml) {
 	return h;
 }
 
-function buildShareText(title, p, storyText) {
+// Markdown variant used for the clipboard's text/plain flavour.
+function buildShareText(title, p, storyMd) {
 	let parts = [];
-	if (title) parts.push(title);
+	if (title) parts.push('# ' + title);
 	parts.push('A ' + p.name + ' adventure');
 	let lines = promptLines(p);
 	if (lines.length) parts.push(lines.join('\n'));
-	parts.push('');
-	parts.push(storyText);
-	return parts.join('\n');
+	parts.push('---');
+	parts.push(storyMd);
+	return parts.join('\n\n');
 }
 
 function downloadStory() {
@@ -205,7 +238,7 @@ function copyStory() {
 	let title = (document.getElementById('storyTitle').value || '').trim();
 	let p = getSessionPrompt();
 	let html = buildShareHtml(title, p, sanitizeStoryHtml(getEditor().innerHTML));
-	let text = buildShareText(title, p, getEditorText());
+	let text = buildShareText(title, p, htmlToMarkdown(getEditor().innerHTML));
 	if (navigator.clipboard && window.ClipboardItem) {
 		navigator.clipboard.write([new ClipboardItem({
 			'text/html': new Blob([html], { type: 'text/html' }),
@@ -217,14 +250,20 @@ function copyStory() {
 }
 
 function fallbackCopy(text) {
+	let scrollY = window.scrollY;
 	let ta = document.createElement('textarea');
 	ta.value = text;
+	ta.readOnly = true;
 	ta.style.position = 'fixed';
+	ta.style.top = '0';
+	ta.style.left = '0';
 	ta.style.opacity = '0';
 	document.body.appendChild(ta);
+	ta.focus({ preventScroll: true });
 	ta.select();
 	try { document.execCommand('copy'); copied(); } catch (e) { /* ignore */ }
 	ta.remove();
+	window.scrollTo(window.scrollX, scrollY);
 }
 
 function copied() {

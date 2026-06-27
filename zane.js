@@ -156,7 +156,6 @@ function startStory(toTop) {
 	if (toTop) {
 		document.getElementById('readyToWrite').scrollIntoView();
 	}
-	focusStoryTitle();
 }
 
 function randomlySelect() {
@@ -180,7 +179,7 @@ function showCriteria() {
 	document.getElementById('constraint').innerText = localStorage.constraint || '';
 
 	document.getElementById('storyPrep').style.display = 'none';
-	document.getElementById('storyCriteria').style.display = 'block';
+	document.getElementById('selectedCriteria').style.display = 'block';
 }
 
 function start() {
@@ -285,7 +284,7 @@ function reset() {
 	clearSession();
 	clearEditor();
 	document.getElementById('storyPrep').style.display = 'block';
-	document.getElementById('storyCriteria').style.display = 'none';
+	document.getElementById('selectedCriteria').style.display = 'none';
 	document.title = documentTitle;
 }
 
